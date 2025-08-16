@@ -21,7 +21,12 @@ def assign_rarity(rarities) -> list:
 class Item():
     def __init__(self, name: str):
         self.name = name
+        self.id = rand.randint(1, 10000) # Unique
         self.rarity, self.value = assign_rarity(rarities)
+        if self.value > 900:
+            self.durability = rand.randint(100, 250)
+        else:
+            self.durability = rand.randint(75, 150)
 
     def calculate_value(self) -> float:
         if self.rarity == 'mythic':
@@ -36,3 +41,6 @@ class Item():
             return self.value * 1
         else:
             return self.value * 0.5
+
+    def show_attributes(self):
+        print(f"")
